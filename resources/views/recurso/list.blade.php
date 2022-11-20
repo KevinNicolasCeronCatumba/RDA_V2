@@ -35,7 +35,6 @@
           <tr>
             <!--<th>Id</th>-->
             <th>Nombre</th>
-            <!--<th>Descripcion</th>-->
             <th>Tipo</th>
             <th>Uso</th>
             <th>Cantidad</th>
@@ -49,10 +48,10 @@
           <tr >
               <!--<td>{{ $r -> id }}</td>-->
               <td>{{ $r -> nomRec }}</td>
-              <!--<td>{{ $r -> descRec }}</td>-->
 
               <td>{{ $r -> tipRec == 0 ? 'Herramienta' : ($r -> tipRec == 1 ? 'Insumo' : 
-                    ($r -> tipRec == 2 ? 'Infraestructura' : ($r -> tipRec == 3 ? 'Tecnología' : 'Error' ))) }}</td>
+                    ($r -> tipRec == 2 ? 'Infraestructura' : ($r -> tipRec == 3 ? 'Tecnología' : 
+                    ($r -> tipRec == 4 ? 'Otro' : 'Error' )))) }}</td>
                 
               <td>{{ $r -> usoRec == 0 ? 'Consumible' : 'Recurso' }}</td>
               
@@ -84,6 +83,7 @@
     var datat=document.querySelector("#dataRec"); 
     var dataTable=new DataTable("#dataRec",{ 
       perPage:10,
+      PerPageSelect:[5,10,20],
       labels: {
           placeholder: "Buscar",
           perPage: "{select}  Registros por página",

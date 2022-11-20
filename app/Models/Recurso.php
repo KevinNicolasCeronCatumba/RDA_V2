@@ -9,7 +9,7 @@ class Recurso extends Model
 {
     use HasFactory;
     
-    protected $fillable = ['nomRec', 'descRec','tipRec','usoRec','cantRec','estRec'];
+    protected $fillable = ['nomRec','tipRec','usoRec','cantRec','estRec'];
 
     public function detallesrecursos(){
         return $this -> hasMany(DetalleRecurso::class);

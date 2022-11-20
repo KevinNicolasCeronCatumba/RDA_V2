@@ -27,6 +27,7 @@
                     <table class="table table-hover table-striped">
                         <thead>
                            <tr>
+                            <th>ID</th>
                             <th>Fecha</th>
                             <th>Terreno</th>
                             <th>Hora Inicio</th>
@@ -41,6 +42,7 @@
                         <tbody>
                            @foreach($eventos as $e)
                            <tr>
+                            <td>{{ $e -> id }}</td>
                             <td>{{ $e -> fechaEve }}</td>
                             <td>{{ $e -> Terreno -> nomTer }}</td>
                             <td>{{ $e -> horaIniEve }}</td>
