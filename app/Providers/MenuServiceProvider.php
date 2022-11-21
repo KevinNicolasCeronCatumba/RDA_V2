@@ -29,6 +29,8 @@ class MenuServiceProvider extends ServiceProvider
     $rol = session('rol');
     if ($rol == 2) {
       unset($verticalMenuData[5]);
+    } else if ($rol == 3) {
+      unset($verticalMenuData[4]);
     }
     // Share all menuData to all the views
     \View::share('menuData', [$verticalMenuData]);
