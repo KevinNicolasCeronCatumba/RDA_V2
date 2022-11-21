@@ -9,6 +9,7 @@ use App\Http\Controllers\DetalleRecursosController;
 use App\Http\Controllers\TerrenoController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\EventoController;
+use App\Http\Controllers\PDFController;
 
 
 /*
@@ -56,4 +57,7 @@ Route::get('/layouts/blank', $controller_path . '\layouts\Blank@index')->name('l
 // pages - notFound - mantenimiento
 Route::get('/pages/misc-error', $controller_path . '\pages\MiscError@index')->name('pages-misc-error');
 Route::get('/pages/misc-under-maintenance', $controller_path . '\pages\MiscUnderMaintenance@index')->name('pages-misc-under-maintenance');
+
+//Ejemplo PDF
+Route::get('/pdf/{id}', [PDFController::class, 'pdf'])->name('descargarPDF');
 

@@ -138,6 +138,21 @@
                               </tr>
                             @endforeach
                           </table>
+                        
+                      <h5>Otros:</h5>
+                      <table class="table table-borderless">
+                            @foreach($otros as $o)
+                              <tr>
+                                <td><li>{{ $o -> nomRec }} </li></td>
+                                <td>{{ $o -> cantidad }} Und.</td>
+                                <td><form action="{{ route('detallerecursos.destroy', $o -> id) }}" method="POST">
+                                  @csrf
+                                  @method('DELETE')
+                                  <button class="btn btn-outline-danger btn-sm" type="submit" onclick="return confirm('¿Estás seguro que quieres eliminar este recurso?');"><i class="bi bi-trash"></i></button>
+                                </form></td>
+                              </tr>
+                            @endforeach
+                          </table>
                       </div>
                     </div>
                   </div>

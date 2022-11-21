@@ -59,6 +59,8 @@
                                 @method('DELETE')
                                 <button type="submit" onclick="return confirm('¿Estás seguro que quieres eliminar este evento?');">Eliminar</button>
                             </form></td>
+
+                            <td><a href="{{ route('descargarPDF', $e) }}" target="_blank">Imprimir PDF</a></td>
                            </tr>
 
                             <!-- Modal -->

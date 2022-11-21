@@ -41,6 +41,7 @@ class DetalleRecursosController extends Controller
         $insumo = DetalleRecurso::select('detalle_recursos.cantidad','recursos.nomRec','recursos.tipRec','detalle_recursos.id')->join('recursos','detalle_recursos.recurso_id','=','recursos.id')->where('detalle_recursos.evento_id','=',$id)->where('recursos.tipRec','=',1)->get();
         $infra = DetalleRecurso::select('detalle_recursos.cantidad','recursos.nomRec','recursos.tipRec','detalle_recursos.id')->join('recursos','detalle_recursos.recurso_id','=','recursos.id')->where('detalle_recursos.evento_id','=',$id)->where('recursos.tipRec','=',2)->get();
         $tecnologia = DetalleRecurso::select('detalle_recursos.cantidad','recursos.nomRec','recursos.tipRec','detalle_recursos.id')->join('recursos','detalle_recursos.recurso_id','=','recursos.id')->where('detalle_recursos.evento_id','=',$id)->where('recursos.tipRec','=',3)->get();
+        $otros = DetalleRecurso::select('detalle_recursos.cantidad','recursos.nomRec','recursos.tipRec','detalle_recursos.id')->join('recursos','detalle_recursos.recurso_id','=','recursos.id')->where('detalle_recursos.evento_id','=',$id)->where('recursos.tipRec','=',4)->get();
 
         $id = Evento::find($id);
         $recursos = Recurso::all();
@@ -48,7 +49,8 @@ class DetalleRecursosController extends Controller
         
 
         return view('detallerecurso.list')->with('evento', $id)-> with('detallerecursos', $detallerecursos)->
-                with('recursos',$recursos)->with('herramienta',$herramienta)->with('insumo',$insumo)->with('infra', $infra)->with('tec',$tecnologia);
+                with('recursos',$recursos)->with('herramienta',$herramienta)->with('insumo',$insumo)->with('infra', $infra)->
+                with('tec',$tecnologia)->with('otros',$otros);
     }
 
     public function edit(DetalleRecurso $detallerecurso)
