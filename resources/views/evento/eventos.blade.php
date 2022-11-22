@@ -36,7 +36,7 @@
                             <!--<th>Logistico</th>-->
                             <th>Estado</th>
                             <th colspan="3">Acciones</th>
-                           </tr> 
+                           </tr>
                         </thead>
                         <tbody>
                            @foreach($eventos as $e)
@@ -51,7 +51,7 @@
                             <td>{{ $e -> estEve }}</td>
                             <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detalleEve{{ $e -> id}}">Detalles</button></td>
                             <td><a href="{{ route('eventos.edit', $e ) }}">Modificar</a></td>
-                            
+
                             <td><form action="{{ route('eventos.destroy', $e ) }}" method="post">
                                 @csrf
                                 @method('DELETE')
@@ -75,10 +75,11 @@
                                     <b>N° Arboles:</b>{{ $e -> numArbEve}}<br>
                                     <b>Encargado de Logistica:</b>{{ $e -> Usuario -> nombre }}<br>
                                     <b>Estado:</b>{{ $e -> estEve}}<br>
-                                    
+
                                 </div>
                                 <div class="modal-footer">
-                                <button type="button" class="btn btn-primary">Voluntarios</button>
+                                  <a role="button" class="btn btn-primary" href="{{ route('grupos.organize', Crypt::encrypt($e->id)) }}">
+                                    Voluntarios</a>
 
                                 <a href="{{ url('detallerecursos', $e -> id)}}" class="btn btn-primary">Recursos</a>
 
@@ -87,7 +88,7 @@
                                 </div>
                             </div>
                             </div>
-                           @endforeach 
+                           @endforeach
                         </tbody>
                     </table>
                 </div>

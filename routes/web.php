@@ -43,6 +43,10 @@ Route::resource('terrenos', TerrenoController::class );
 Route::resource('empresas', EmpresaController::class );
 Route::resource('eventos', EventoController::class);
 
+//Ruta gestión de voluntarios en los evento
+Route::get('grupo/{id}/organize', $controller_path . '\Evento_voluntarioController@organize')->name('grupos.organize');
+Route::post('grupo/{id}', $controller_path . '\Evento_voluntarioController@store')->name('grupos.guardar');
+Route::post('grupo/{id}/eliminar', $controller_path . '\Evento_voluntarioController@eliminar')->name('grupos.eliminar');
 
 
 // layout

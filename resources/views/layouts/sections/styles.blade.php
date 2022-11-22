@@ -13,6 +13,8 @@
 
 <link rel="stylesheet" href="{{ asset(mix('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')) }}" />
 
+<script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+
 
 
 
