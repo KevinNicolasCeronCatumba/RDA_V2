@@ -23,27 +23,18 @@
                 <div class="form-text text-danger">{{ $errors->first('nomRec') }}</div>
             </div>
 
-
-            <div class="mb-3">
-              <label class="form-label" for="descripcion">Descripción</label>
-              <div class="input-group input-group-merge">
-                <span id="descripcion" class="input-group-text"><i class="bx bx-comment-detail"></i></span>
-                <textarea  class="form-control" name="descRec" rows="3"> {{ Request::old('descRec') }}</textarea>
-              </div>
-                <div class="form-text text-danger">{{ $errors->first('descRec') }}</div>
-            </div>
-
-            <label class="form-label" for="descripcion">Tipo</label>
+            <label class="form-label">Tipo</label>
             <select name="tipRec" class="form-select">
               <option value="">Elija el tipo de recurso</option>
               <option value="0">Herramienta</option>
               <option value="1">Insumo</option>
               <option value="2">Infraestructura</option>
               <option value="3">Tecnología</option>
+              <option value="4">Otro</option>
             </select>
             <div class="form-text text-danger">{{ $errors->first('tipRec') }}</div>
 
-            <label class="form-label" for="descripcion">Uso</label>
+            <label class="form-label">Uso</label>
             <select name="usoRec" class="form-select">
               <option value="">Elija el uso del recurso</option>
               <option value="0">Consumible</option>
@@ -52,7 +43,7 @@
             <div class="form-text text-danger">{{ $errors->first('usoRec') }}</div>
 
             <div class="mb-3">
-              <label class="form-label" for="descripcion">Cantidad</label>
+              <label class="form-label">Cantidad</label>
               <div class="input-group input-group-merge">
                 <span id="descripcion" class="input-group-text"><i class="bx bxs-grid"></i></span>
                 <input type="number" class="form-control" id="nomRec" name="cantRec" value="{{ old('cantRec') }}"/>
@@ -60,7 +51,7 @@
                 <div class="form-text text-danger">{{ $errors->first('cantRec') }}</div>
             </div>
 
-            <label class="form-label" for="descripcion">Estado</label>
+            <label class="form-label">Estado</label>
             <select name="estRec" class="form-select">
               <option value="1">Activo</option>
               <option value="0">Inhabilitado</option>

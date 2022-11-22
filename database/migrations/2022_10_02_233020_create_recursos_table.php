@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('recursos', function (Blueprint $table) {
             $table->id();
             $table->string('nomRec', 30);
-            $table->string('descRec',255)->nullable();
             $table->integer('tipRec');
             $table->integer('usoRec');
             $table->integer('cantRec');

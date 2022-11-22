@@ -22,7 +22,7 @@
               <div class="col-md-6 col-lg-7 d-flex align-items-center">
                 <div class="card-body p-4 p-lg-5 text-black">
   
-                  <form method="POST" action="{{ action('WelcomeController@login') }}">
+                  <form method="POST" action="{{ action('WelcomeController@consultar') }}">
                     <center>
                     <div class="d-flex align-items-center mb-3 pb-1">
                       <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
@@ -36,25 +36,14 @@
                   <br><br>
                     <div class="form-outline mb-4">
                       
-                      <label class="form-label" for="form2Example17">Correo o usuario/Email address</label>
+                      <label class="form-label" for="form2Example17">Email address</label>
                       <input type="email" name="email" id="form2Example17" class="form-control form-control-lg" />
                     </div>
   
-                    <div class="form-outline mb-4">
-                      <label class="form-label" for="form2Example27">Contraseña/password</label>
-                      <input type="password" name="password" id="form2Example27" class="form-control form-control-lg" />
-                    </div>
-  
                     <div class="pt-1 mb-4">
-                      <button  style="height: 55px;" class="btn btn-success form-control form-control-lg" type="submit">Ingresar</button>
+                      <button  style="height: 55px;" class="btn btn-success form-control form-control-lg" type="submit">Recuperar</button>
                     </div>
 
-                    <a href="/recuperar" target="_self" >Olvidaste tu contraseña?</a>
-                  
-                    <!--<a class="small text-muted" href="#!">Olvidaste tu contraseña?</a>-->
-                    <!--<p class="mb-5 pb-lg-2" style="color: #40d43b;">No tienes una cuenta? <a href="register.html" style="color: #40d43b;">Registrate aqui</a></p>
-                    <a href="#!" class="small text-muted">Terms of use.</a>
-                    <a href="#!" class="small text-muted">Privacy policy</a>-->
                   </form>
   
                 </div>

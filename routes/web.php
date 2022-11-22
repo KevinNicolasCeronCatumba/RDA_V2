@@ -9,6 +9,8 @@ use App\Http\Controllers\DetalleRecursosController;
 use App\Http\Controllers\TerrenoController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\EventoController;
+use App\Http\Controllers\PDFController;
+use App\Http\Controllers\RecuperarController;
 
 
 /*
@@ -42,6 +44,7 @@ Route::resource('detallerecursos' , DetalleRecursosController::class );
 Route::resource('terrenos', TerrenoController::class );
 Route::resource('empresas', EmpresaController::class );
 Route::resource('eventos', EventoController::class);
+Route::resource('recuperar', RecuperarController::class);
 
 //Ruta gestión de voluntarios en los evento
 Route::get('grupo/{id}/organize', $controller_path . '\Evento_voluntarioController@organize')->name('grupos.organize');
@@ -60,4 +63,7 @@ Route::get('/layouts/blank', $controller_path . '\layouts\Blank@index')->name('l
 // pages - notFound - mantenimiento
 Route::get('/pages/misc-error', $controller_path . '\pages\MiscError@index')->name('pages-misc-error');
 Route::get('/pages/misc-under-maintenance', $controller_path . '\pages\MiscUnderMaintenance@index')->name('pages-misc-under-maintenance');
+
+//Ejemplo PDF
+Route::get('/pdf/{id}', [PDFController::class, 'pdf'])->name('descargarPDF');
 

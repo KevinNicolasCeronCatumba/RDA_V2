@@ -26,22 +26,14 @@
             </div>
 
 
-            <div class="mb-3">
-              <label class="form-label" for="descripcion">Descripción</label>
-              <div class="input-group input-group-merge">
-                <span id="descripcion" class="input-group-text"><i class="bx bx-comment-detail"></i></span>
-                  <textarea  class="form-control" name="descRec" rows="3"> {{ Request::old('descRec', $recurso -> descRec) }}</textarea>
-              </div>
-                <div class="form-text text-danger">{{ $errors->first('descRec') }}</div>
-            </div>
-
-            <label class="form-label" for="descripcion">Tipo</label>
+            <label class="form-label">Tipo</label>
             <select name="tipRec" class="form-select">
               <option value="">Elija el tipo de recurso</option>
               <option value="0" {{ $recurso -> tipRec == '0' ? 'selected' : '' }}>Herramienta</option>
               <option value="1" {{ $recurso -> tipRec == '1' ? 'selected' : '' }}>Insumo</option>
               <option value="2" {{ $recurso -> tipRec == '2' ? 'selected' : '' }}>Infraestructura</option>
               <option value="3" {{ $recurso -> tipRec == '3' ? 'selected' : '' }}>Tecnologia</option>
+              <option value="4" {{ $recurso -> tipRec == '4' ? 'selected' : '' }}>Otro</option>
             </select>
             <div class="form-text text-danger">{{ $errors->first('tipRec') }}</div>
 
