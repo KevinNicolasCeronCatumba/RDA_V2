@@ -7,19 +7,7 @@
       "slug": "dashboard-analytics"
     },
     {
-      "name": "inicie",
-      "icon": "menu-icon tf-icons bx bx-layout",
-      "slug": "layouts",
-      "submenu": [
-        {
-          "url": "/layouts/without-menu",
-          "name": "Without menu",
-          "slug": "layouts-without-menu"
-        }
-      ]
-    },
-    {
-      "menuHeader": "Acciones voluntarios"
+      "menuHeader": "Acciones "
     },
     {
       "name": "Voluntarios",

@@ -61,7 +61,7 @@ class VoluntarioController extends Controller
         Voluntario::create($request->all());
 
 
-        return url()->full();
+        return redirect()->route('voluntarios.index')->with('success','Voluntario creado correctamente');
     }
 
     /**

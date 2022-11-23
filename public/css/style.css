@@ -1,4 +1,44 @@
 #card-overflow{
-    height: 350px;
-    overflow: auto;
+  height: 350px;
+  overflow: auto;
 }
+
+.dataTable-input {
+border-radius: 10px;
+border: solid #71dd37 1px;
+}
+
+.dataTable-input:focus {
+border: solid #71dd37 1px;
+}
+
+.dataTable-selector {
+border-radius: 10px;
+border: solid gray 1px;
+color: gray;
+}
+
+.dataTable-bottom{
+padding: 20px 20px;
+}
+
+#dataGru{
+margin-top: 15px;
+margin-bottom: 15px;
+}
+
+
+.dataTable-pagination a {
+background-color: #e3e1e14f;
+color: gray;
+border-radius: 50%;
+}
+
+
+.dataTable-pagination a:hover {
+background-color: #0c2500;
+color: gray;
+border-radius: 50%;
+cursor: default;
+}
+

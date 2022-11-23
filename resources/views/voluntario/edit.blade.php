@@ -4,18 +4,33 @@
 
 @section('content')
 
+<div class="container">
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb breadcrumb-style1">
+      <li class="breadcrumb-item">
+        <a href="{{ route('voluntarios.index') }}">Lista voluntarios</a>
+      </li>
+      <li class="breadcrumb-item active">Edición</li>
+    </ol>
+  </nav>
+
 <div class="row">
-  <div class="col-xl">
-    <div class="card mb-4">
-      <div class="card-header d-flex justify-content-between align-items-center">
-        <h4 class="mb-0 text-primary ">Agregar voluntario</h4>
-      </div>
+  <div class="col">
+    <div class="card">
+      <div class="card-header">
+
+        <div class="divider divider-dotted divider-primary" style="margin: 5%; margin-top: 0%; margin-bottom:0%">
+          <div class="divider-text text-primary">Editar voluntario</div>
+        </div>
+
       <div class="card-body">
         <form method="POST" action="{{ route('voluntarios.update',  $voluntario ->id ) }}" :voluntario="$voluntario">
             @csrf
             @method('PUT')
 
-            <div class="mb-3">
+            <div class="row g-2">
+              <div class="col mb-0">
               <label class="form-label" for="nombre">Nombre</label>
               <div class="input-group input-group-merge">
                 <span id="nombre" class="input-group-text"><i class="bx bx-user"></i></span>
@@ -25,7 +40,7 @@
             </div>
 
 
-            <div class="mb-3">
+            <div class="col mb-0">
               <label class="form-label" for="apellido">Apellido</label>
               <div class="input-group input-group-merge">
                 <span id="apellido" class="input-group-text"><i class="bx bx-user"></i></span>
@@ -33,9 +48,11 @@
               </div>
                 <div class="form-text text-danger">{{ $errors->first('apellido') }}</div>
             </div>
+          </div><br>
 
 
-            <div class="mb-3">
+          <div class="row g-2">
+            <div class="col mb-0">
               <label class="form-label" for="Nomdoc">Número de documento</label>
               <div class="input-group input-group-merge">
                 <span id="Nomdoc" class="input-group-text"><i class="bx bxs-user-detail"></i></span>
@@ -45,7 +62,8 @@
             </div>
 
 
-            <div class="mb-3 form-group">
+            <div class="col mb-0  form-group">
+              <label class="form-label" for="Nomdoc">Tipo de documento</label><br>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="tipoDoc" id="tipoDoc" value="TI" {{ $voluntario->tipoDoc == 'TI' ? 'checked' : '' }}>
                     <label class="form-check-label" for="inlineRadio1">TI</label>
@@ -60,9 +78,10 @@
                 </div>
                     <div class="form-text text-danger">{{ $errors->first('tipoDoc') }}</div>
             </div>
+          </div><br>
 
-
-            <div class="mb-3">
+          <div class="row g-2">
+            <div class="col mb-0">
               <label class="form-label" for="correo">Correo</label>
               <div class="input-group input-group-merge">
                 <span class="input-group-text"><i class="bx bx-envelope"></i></span>
@@ -73,7 +92,7 @@
             </div>
 
 
-            <div class="mb-3">
+            <div class="col mb-0">
               <label class="form-label" for="telefono">Teléfono</label>
               <div class="input-group input-group-merge">
                 <span class="input-group-text"><i class="bx bx-phone"></i></span>
@@ -81,8 +100,9 @@
               </div>
               <div class="form-text text-danger">{{ $errors->first('telefono') }}</div>
             </div>
-
-                <button type="submit" class="btn btn-primary">Guardar</button>
+          </div><br><br>
+          <center>
+                <button type="submit" class="btn btn-primary">Guardar</button></center>
             </form>
       </div>
     </div>

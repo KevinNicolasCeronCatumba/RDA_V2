@@ -4,6 +4,17 @@
 
 @section('content')
 
+@section('content')
+
+<link rel="stylesheet"  href="{{ asset('css/style.css') }}">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="sweetalert2.all.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/mobius1/vanilla-Datatables@latest/vanilla-dataTables.min.css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/mobius1/vanilla-Datatables@latest/vanilla-dataTables.min.js"></script>
+
+
+
+
 <div class="container-fluid">
 	<div class="row justify-content-center">
 		<div class="col-md-12">
@@ -12,14 +23,11 @@
         <div class="card-header">
 					<div style="display: flex; justify-content: space-between; align-items: center;">
               <div class="float-left">
-                <h1>Voluntario </h1>
+                <h1>Voluntarios </h1>
               </div>
 
-              <a href="{{ url()->previous() }}">Regresar</a>
+              <!--<a href="{{ url()->previous() }}">Regresar</a>-->
 
-              <div>
-                <input wire:model='keyWord' type="text" class="form-control" name="search" id="search" placeholder="Search Voluntarios">
-              </div>
 
               <a type="button" class="btn btn-outline-primary"  href="{{ route('voluntarios.create')}}"><i class="bi bi-plus-circle"></i> Agregar Voluntario</a>
 
@@ -27,20 +35,29 @@
 
           @if ($message = Session::get('success'))
 
-          <div class="alert alert-primary alert-dismissible" style="padding: 10px; margin:10px" role="alert">
-            <h6 class="alert-heading d-flex align-items-center fw-bold mb-1">{{ $message }} </h6>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-            </button>
-          </div>
+            <script>
+              const Toast = Swal.mixin({ toast: true, position: 'bottom-end', showConfirmButton: false, timer: 3000, timerProgressBar: true,
+              didOpen: (toast) => {
+                  toast.addEventListener('mouseenter', Swal.stopTimer)
+                  toast.addEventListener('mouseleave', Swal.resumeTimer)
+              }
+              })
+
+              Toast.fire({ icon: 'success', title: '{{ $message }}' })
+            </script>
 
           @endif
 
-				</div><br>
+				</div>
+
+        <div class="divider divider-dotted" style="margin: 5%; margin-top: -2%; margin-bottom:0%">
+          <div class="divider-text"></div>
+        </div>
 
         <div class="card-body">
 
             <div class="table-responsive">
-              <table class="table table-hover table-striped">
+              <table class="table table-hover table-striped" id="dataVo">
                 <thead>
                   <tr>
                     <th>Id</th>
@@ -91,6 +108,19 @@
   </div>
 </div>
 
+<script>
+  var datat=document.querySelector("#dataVo");
+  var dataTable=new DataTable("#dataVo",{
+    perPage:10,
+    sortable: true,
+    labels: {
+      placeholder: "Buscar",
+      perPage: "{select}  Registros por página",
+      noRows: "No se encontraron registros",
+      info: "Mostrando {start} - {end} de {rows} registros",
+  }
+} ) ;
+</script>
 
 
 @endsection

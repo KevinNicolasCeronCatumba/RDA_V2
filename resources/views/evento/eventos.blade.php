@@ -3,11 +3,26 @@
 @section('title', 'Eventos')
 
 @section('content')
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="sweetalert2.all.min.js"></script>
 
-        <h1>Eventos</h1>
-        <a href="{{ route('eventos.create') }}"><i class="bi bi-plus-circle"></i>&nbsp;Agregar</a>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/mobius1/vanilla-Datatables@latest/vanilla-dataTables.min.css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/mobius1/vanilla-Datatables@latest/vanilla-dataTables.min.js"></script>
+
+<div class="container-fluid">
+	<div class="row justify-content-center">
+		<div class="col-md-12">
+			<div class="card">
+
+        <div class="card-header">
+					<div style="display: flex; justify-content: space-between; align-items: center;">
+              <div class="float-left">
+                <h1>Eventos </h1>
+              </div>
+
+
+          <a type="button" class="btn btn-outline-primary"  href="{{ route('eventos.create') }}"><i class="bi bi-plus-circle"></i>&nbsp;Crear evento</a>
+
+  </div>
+
         @if ($message = Session::get('success'))
         <script>
             const Toast = Swal.mixin({ toast: true, position: 'bottom-end', showConfirmButton: false, timer: 3000, timerProgressBar: true,
@@ -21,10 +36,10 @@
         </script>
         @endif
 
-        <hr class="my-5">
-            <div class="card">
-                <div class="table-responsive">
-                    <table class="table table-hover table-striped">
+        <div class="divider divider-dotted" style="margin: 5%; margin-top: 1%; margin-bottom:1%">
+          <div class="divider-text"></div>
+        </div>
+                    <table class="table table-hover table-striped" id="dataEv">
                         <thead>
                            <tr>
                             <th>ID</th>
@@ -36,7 +51,7 @@
                             <th>Tipo</th>
                             <!--<th>Logistico</th>-->
                             <th>Estado</th>
-                            <th colspan="3">Acciones</th>
+                            <th colspan="4">Acciones</th>
                            </tr>
                         </thead>
                         <tbody>
@@ -52,15 +67,23 @@
                             <!--<td>{{ $e -> Usuario -> nombre }}</td>-->
                             <td>{{ $e -> estEve }}</td>
                             <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detalleEve{{ $e -> id}}">Detalles</button></td>
-                            <td><a href="{{ route('eventos.edit', $e ) }}">Modificar</a></td>
 
-                            <td><form action="{{ route('eventos.destroy', $e ) }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" onclick="return confirm('¿Estás seguro que quieres eliminar este evento?');">Eliminar</button>
-                            </form></td>
+                            <td>
+                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                              <a role="button" class="btn btn-outline-warning btn-sm" href="{{  route('eventos.edit', $e) }}"
+                                  onclick="return confirm('Estás seguro que quieres editar este evento?');">
+                                  <i class="bi bi-pencil"></i></a>
 
-                            <td><a href="{{ route('descargarPDF', $e) }}" target="_blank">Imprimir PDF</a></td>
+
+                              <form action="{{ route('eventos.destroy', $e ) }}" method="POST">
+                                  @csrf
+                                  @method('DELETE')
+                                  <button class="btn btn-outline-danger btn-sm" type="submit" onclick="return confirm('Estás seguro que quieres eliminar este evento?');"><i class="bi bi-trash"></i></button>
+                              </form>
+
+                              <a href="{{ route('descargarPDF', $e) }}" class="btn btn-outline-info btn-sm" target="_blank">Imprimir PDF</a></td>
+
+                            </div></td>
                            </tr>
 
                             <!-- Modal -->
@@ -85,11 +108,15 @@
                                   <a role="button" class="btn btn-primary" href="{{ route('grupos.organize', Crypt::encrypt($e->id)) }}">
                                     Voluntarios</a>
 
+                                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                      <a role="button" class="btn btn-outline-primary" href="{{ route('grupos.asistencia', Crypt::encrypt($e->id)) }}">
+                                          Asistencia</a>
+
+                                    <div>
+
                                 <a href="{{ url('detallerecursos', $e -> id)}}" class="btn btn-primary">Recursos</a>
 
                                 <a href="{{ url('observaciones', $e -> id)}}" class="btn btn-primary">Observaciones</a>
-
-                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                 </div>
                                 </div>
                             </div>
@@ -97,25 +124,27 @@
                            @endforeach
                         </tbody>
                     </table>
+                  </div>
+
                 </div>
-<li class="list-group-item list-group-item-primary"><a href="../index">Inicio</a></li>
-    <script>
-        console.log("${cliented}");
-        var datat = document.querySelector("#table");
-        var dataTable = new DataTable("#table", {
-            perPage: 10,
-            labels: {
-                placeholder: "Busca por un campo...",
-                perPage: "{select} registros por página",
-                noRows: "No se encontraron registros",
-                info: "Mostrando {start} a {end} de {rows} registros",
-            }
-        });
+              </div>
+            </div>
+          </div>
+        </div>
 
-        <li class="list-group-item list-group-item-primary"><a href="index">Agregar Voluntario</a></li>
-    </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-        crossorigin="anonymous"></script>
+                <script>
+                  var datat=document.querySelector("#dataEv");
+                  var dataTable=new DataTable("#dataEv",{
+                    perPage:10,
+                    sortable: true,
+                    labels: {
+                      placeholder: "Buscar",
+                      perPage: "{select}  Registros por página",
+                      noRows: "No se encontraron registros",
+                      info: "Mostrando {start} - {end} de {rows} registros",
+                  }
+                } ) ;
+                </script>
+
 @endsection

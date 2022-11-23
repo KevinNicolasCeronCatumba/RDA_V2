@@ -50,7 +50,9 @@ Route::resource('recuperar', RecuperarController::class);
 Route::get('grupo/{id}/organize', $controller_path . '\Evento_voluntarioController@organize')->name('grupos.organize');
 Route::post('grupo/{id}', $controller_path . '\Evento_voluntarioController@store')->name('grupos.guardar');
 Route::post('grupo/{id}/eliminar', $controller_path . '\Evento_voluntarioController@eliminar')->name('grupos.eliminar');
-
+Route::get('grupo/{id}/asistencia', $controller_path . '\Evento_voluntarioController@asistencia')->name('grupos.asistencia');
+Route::post('grupo/{id}', $controller_path . '\Evento_voluntarioController@guardarA')->name('grupos.asi');
+Route::post('grupo/{id}', $controller_path . '\Evento_voluntarioController@guardarA')->name('grupos.asi');
 
 // layout
 Route::get('/layouts/without-menu', $controller_path . '\layouts\WithoutMenu@index')->name('layouts-without-menu');
