@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('observaciones', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->longText('descripcion')->nullable();
-            $table->enum('tipoObservacion', ['evento', 'logistica', 'voluntarios', 'recursos', 'terreno'])->nullable();
+            $table->foreignId('evento_id')->constrained();
             $table->timestamps();
         });
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use App\Models\DetalleRecurso;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -43,8 +44,11 @@ class DetalleRecursosController extends Controller
         $tecnologia = DetalleRecurso::select('detalle_recursos.cantidad','recursos.nomRec','recursos.tipRec','detalle_recursos.id')->join('recursos','detalle_recursos.recurso_id','=','recursos.id')->where('detalle_recursos.evento_id','=',$id)->where('recursos.tipRec','=',3)->get();
         $otros = DetalleRecurso::select('detalle_recursos.cantidad','recursos.nomRec','recursos.tipRec','detalle_recursos.id')->join('recursos','detalle_recursos.recurso_id','=','recursos.id')->where('detalle_recursos.evento_id','=',$id)->where('recursos.tipRec','=',4)->get();
 
+        $sql = 'SELECT * FROM recursos WHERE id NOT IN (SELECT detalle_recursos.recurso_id FROM detalle_recursos, eventos 
+        WHERE evento_id = '.$id.');';
+
         $id = Evento::find($id);
-        $recursos = Recurso::all();
+        $recursos = DB::select($sql);
 
         
 

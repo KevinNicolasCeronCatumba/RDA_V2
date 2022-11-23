@@ -87,6 +87,8 @@
 
                                 <a href="{{ url('detallerecursos', $e -> id)}}" class="btn btn-primary">Recursos</a>
 
+                                <a href="{{ url('observaciones', $e -> id)}}" class="btn btn-primary">Observaciones</a>
+
                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                                 </div>
                                 </div>

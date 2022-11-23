@@ -20,7 +20,8 @@
         <thead>
           <th>Id</th>
           <th>Descripción</th>
-          <th>Tipo</th>
+          <!--<th>Tipo</th>-->
+          <th>Evento</th>
           <th colspan="2">acciones</th>
         </thead>
 
@@ -30,7 +31,8 @@
                 <tr >
                     <td>{{ $observacione -> id }}</td>
                     <td>{{ $observacione -> descripcion }}</td>
-                    <td>{{ $observacione -> tipoObservacion }}</td>
+                    <!--<td>{{ $observacione -> tipoObservacion }}</td>-->
+                    <td>{{ $observacione -> Evento ->id }}</td>
 
                    <td>
                     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">

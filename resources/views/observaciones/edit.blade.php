@@ -27,7 +27,7 @@
             </div>
 
 
-            <div class="mb-3">
+           <!-- <div class="mb-3">
               <select class="form-select" name="tipoObservacion" id="tipoObservacion" id="bs-validation-country">
                   <option value="" selected>Seleccione el tipo de observación</option>
                   <option value="evento" {{  $observacione->tipoObservacion == 'evento' ? 'selected' : '' }}>Evento</option>
@@ -37,7 +37,7 @@
                   <option value="terreno" {{ $observacione->tipoObservacion == 'terreno' ? 'selected' : '' }}>Terreno</option>
                 </select>
                 <div class="form-text text-danger">{{ $errors->first('tipoObservacion') }}</div>
-              </div> <br>
+              </div> <br>-->
 
 
                 <button type="submit" class="btn btn-primary">Guardar</button>

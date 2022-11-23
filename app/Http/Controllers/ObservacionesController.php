@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Observaciones;
+use App\Models\Evento;
 use Illuminate\Http\Request;
 
 class ObservacionesController extends Controller
@@ -38,13 +39,15 @@ class ObservacionesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "descripcion" => 'required',
-            "tipoObservacion" => 'required'
+            "descripcion" => 'required'
         ]);
 
-        Observaciones::create($request->all());
+        Observaciones::create([
+            'evento_id' => $request -> evento,
+            'descripcion' => $request -> descripcion
+        ]);
 
-        return redirect()->route('observaciones.index') -> with('success','Observación creado con éxito');
+        return redirect()->route('observaciones.index') -> with('success','Observación creada con éxito');
     }
 
     /**
@@ -53,9 +56,12 @@ class ObservacionesController extends Controller
      * @param  \App\Models\Observaciones  $observaciones
      * @return \Illuminate\Http\Response
      */
-    public function show(Observaciones $observaciones)
+    public function show($id)
     {
-        //
+        $id = Evento::find($id);
+        $observaciones = Observaciones::all();
+
+        return view('observaciones.create') -> with('observaciones', $observaciones)->with('evento', $id);
     }
 
     /**
@@ -80,7 +86,6 @@ class ObservacionesController extends Controller
     {
         $request->validate([
             "descripcion" => 'required',
-            "tipoObservacion" => 'required'
         ]);
 
         $observacione->update($request->all());

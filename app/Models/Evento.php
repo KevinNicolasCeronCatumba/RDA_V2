@@ -26,5 +26,9 @@ class Evento extends Model
      //Método que traé el modelo de la relación voluntario
      public function voluntarios(){
       return $this->belongsToMany(voluntario::class)->withTimestamps()->withPivot('asistencia');
-  }
+    }
+    
+    public function observaciones(){
+        return $this -> hasMany(Observaciones::class);
+    }
 }

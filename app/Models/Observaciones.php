@@ -9,5 +9,9 @@ class Observaciones extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['descripcion','tipoObservacion'];
+    protected $fillable = ['descripcion','evento_id'];
+
+    public function evento(){
+        return $this -> belongsTo(Evento::class, 'evento_id');
+    }
 }

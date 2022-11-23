@@ -24,8 +24,9 @@
                 <div class="form-text text-danger">{{ $errors->first('descripcion') }}</div>
             </div>
 
-
-            <div class="mb-3">
+            <input type="hidden" name="evento" value="{{ $evento -> id }}">
+            
+            <!--<div class="mb-3">
             <select class="form-select" name="tipoObservacion" id="tipoObservacion" id="bs-validation-country">
                 <option value="" selected>Seleccione el tipo de observación</option>
                 <option value="evento" {{ old('tipoObservacion') == 'evento' ? 'selected' : '' }}>Evento</option>
@@ -35,7 +36,7 @@
                 <option value="terreno" {{ old('tipoObservacion') == 'terreno' ? 'selected' : '' }}>Terreno</option>
               </select>
               <div class="form-text text-danger">{{ $errors->first('tipoObservacion') }}</div>
-            </div> <br>
+            </div> <br>-->
 
 
                 <button type="submit" class="btn btn-primary">Guardar</button>
