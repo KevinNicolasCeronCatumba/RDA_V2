@@ -8,6 +8,12 @@ use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
+
+if (isset($_COOKIE['rol'])) {
+    session_start();
+    session(['rol' => $_COOKIE['rol']]);
+}
+
 class EventoController extends Controller
 {
     public function index()

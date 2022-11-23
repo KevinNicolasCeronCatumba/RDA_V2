@@ -6,6 +6,11 @@ use App\Models\Observaciones;
 use App\Models\Evento;
 use Illuminate\Http\Request;
 
+if (isset($_COOKIE['rol'])) {
+    session_start();
+    session(['rol' => $_COOKIE['rol']]);
+}
+
 class ObservacionesController extends Controller
 {
     /**

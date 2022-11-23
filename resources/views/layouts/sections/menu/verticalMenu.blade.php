@@ -2,7 +2,7 @@
 
   <!-- ! Hide app brand if navbar-full -->
   <div class="app-brand demo">
-    <a href="{{url('/')}}" class="app-brand-link">
+    <a href="{{url('dashboard')}}" class="app-brand-link">
       <img src="{{asset('assets/img/logo-RDA.png')}}" width="160" alt="Layout container">
     </a>
 
@@ -26,33 +26,33 @@
 
     @else
 
-    {{-- active menu method --}}
-    @php
-    $activeClass = null;
-    $currentRouteName = Route::currentRouteName();
+{{-- active menu method --}}
+@php
+$activeClass = null;
+$currentRouteName = Route::currentRouteName();
 
-    if ($currentRouteName === $menu->slug) {
-    $activeClass = 'active';
-    }
-    elseif (isset($menu->submenu)) {
-    if (gettype($menu->slug) === 'array') {
-    foreach($menu->slug as $slug){
-    if (str_contains($currentRouteName,$slug) and strpos($currentRouteName,$slug) === 0) {
-    $activeClass = 'active open';
-    }
-    }
-    }
-    else{
-    if (str_contains($currentRouteName,$menu->slug) and strpos($currentRouteName,$menu->slug) === 0) {
-    $activeClass = 'active open';
-    }
-    }
+if ($currentRouteName === $menu->slug) {
+$activeClass = 'active';
+}
+elseif (isset($menu->submenu)) {
+if (gettype($menu->slug) === 'array') {
+foreach($menu->slug as $slug){
+if (str_contains($currentRouteName,$slug) and strpos($currentRouteName,$slug) === 0) {
+$activeClass = 'active open';
+}
+}
+}
+else{
+if (str_contains($currentRouteName,$menu->slug) and strpos($currentRouteName,$menu->slug) === 0) {
+$activeClass = 'active open';
+}
+}
 
-    }
-    @endphp
+}
+@endphp
 
     {{-- main menu --}}
-    @if (session('rol') == 2 && $menu->name != 'Usuarios' && $menu->name != 'Empresas' || session('rol') == 3 && $menu->name != 'Evento')
+    @if (session('rol') == 2 && $menu->name != 'Usuarios' && $menu->name != 'Empresas' || session('rol') == 3 && $menu->name != 'Evento' || session('rol') == 1)
     <li class="menu-item {{$activeClass}}">
       <a href="{{ isset($menu->url) ? url($menu->url) : 'javascript:void(0);' }}" class="{{ isset($menu->submenu) ? 'menu-link menu-toggle' : 'menu-link' }}" @if (isset($menu->target) and !empty($menu->target)) target="_blank" @endif>
         @isset($menu->icon)

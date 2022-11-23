@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\StoreRecursoRequest;
 
+if (isset($_COOKIE['rol'])) {
+    session_start();
+    session(['rol' => $_COOKIE['rol']]);
+}
+
 class RecursosController extends Controller
 {
     public function index()

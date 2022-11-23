@@ -6,6 +6,12 @@ use App\Models\Empresa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
+
+if (isset($_COOKIE['rol'])) {
+    session_start();
+    session(['rol' => $_COOKIE['rol']]);
+}
+
 class EmpresaController extends Controller
 {
     public function index()

@@ -37,16 +37,16 @@ class WelcomeController
     {
         $resp = $request->all();
         $users = DB::select('SELECT * FROM usuarios WHERE correo="' . $resp['email'] . '" and contrasena="' . $resp['password'] . '"');
-        // print_r($users);
+        
         session_start();
-        session(['rol' => $users[0]->tipo_user]);
-        // print_r(session('rol'));
+       
         if (count($users) == 0) {
             echo ('usuario invalido');
             return view('welcome');
-            // } else return redirect(session('rol') == 1 ? '/dashboard' : '/voluntarios');
-        } else return view('content.dashboard.dashboards-analytics');
-        print_r($users);
+        } else{
+            session(['rol' => $users[0]->tipo_user]);
+            return view('content.dashboard.dashboards-analytics');
+        } 
     }
 
     public function consultar(Request $request)

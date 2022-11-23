@@ -3,8 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Voluntario;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+
+if (isset($_COOKIE['rol'])) {
+    session_start();
+    session(['rol' => $_COOKIE['rol']]);
+}
 
 class VoluntarioController extends Controller
 {
@@ -13,11 +19,12 @@ class VoluntarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+
         $voluntarios = Voluntario::all();
 
-        return view('voluntario.list') -> with('voluntarios', $voluntarios);
+        return view('voluntario.list')->with('voluntarios', $voluntarios);
     }
 
     /**
@@ -40,7 +47,7 @@ class VoluntarioController extends Controller
     {
 
 
-           $request->validate([
+        $request->validate([
             "nombre" => 'required',
             "apellido" => 'required',
             "tipoDoc" => 'required',
@@ -102,9 +109,7 @@ class VoluntarioController extends Controller
         $voluntario->update($request->all());
 
 
-        return redirect()->route('voluntarios.index') ->  with('success','Voluntario editado con éxito');
-
-
+        return redirect()->route('voluntarios.index')->with('success', 'Voluntario editado con éxito');
     }
 
     /**
@@ -117,6 +122,6 @@ class VoluntarioController extends Controller
     {
         $voluntario->delete();
 
-        return redirect()->route('voluntarios.index') -> with('success', 'Voluntario eliminado con éxito');
+        return redirect()->route('voluntarios.index')->with('success', 'Voluntario eliminado con éxito');
     }
 }

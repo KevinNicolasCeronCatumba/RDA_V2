@@ -23,7 +23,7 @@
     },
     {
       "name": "Voluntarios",
-      "icon": "menu-icon tf-icons bx bx bx-dock-top",
+      "icon": "menu-icon tf-icons bx bx bx-run",
       "slug": "voluntarios.index",
       "submenu": [
         {
@@ -35,7 +35,7 @@
     },
     {
       "name": "Observaciones",
-      "icon": "menu-icon tf-icons bx bx bx-dock-top",
+      "icon": "menu-icon tf-icons bx bx bx-edit-alt",
       "slug": "observaciones.index",
       "submenu": [
         {
@@ -47,7 +47,7 @@
     },
     {
       "name": "Usuarios",
-      "icon": "menu-icon tf-icons bx bx bx-dock-top",
+      "icon": "menu-icon tf-icons bx bx bx-user",
       "slug": "usuarios.index",
       "submenu": [
         {
@@ -71,7 +71,7 @@
     },
     {
       "name": "Empresas",
-      "icon": "menu-icon tf-icons bx bx bx-dock-top",
+      "icon": "menu-icon tf-icons bx bx bx-buildings",
       "slug": "empresas.index",
       "submenu": [
         {
@@ -83,7 +83,7 @@
     },
     {
       "name": "Evento",
-      "icon": "menu-icon tf-icons bx bx bx-dock-top",
+      "icon": "menu-icon tf-icons bx bx bx-notepad",
       "slug": "eventos.index",
       "submenu": [
         {
